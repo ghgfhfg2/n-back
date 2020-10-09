@@ -6,6 +6,7 @@ let count = 0;
 let randomeNum;
 let ing = 0;
 let gameNum
+let currentNum
 const num = document.querySelector('.number');
 const resultBox = document.querySelector('.result');
 const btnResult = document.querySelector('.btn_result');
@@ -19,7 +20,7 @@ const btnGameinfo = document.querySelector('.btn_game_info');
 function nBack(backNum){
     ing = 1;
     gameNum = backNum;
-    length = backNum + 1;
+    length = backNum + 9;
     btnGameinfo.style.display = 'none';
     btnStart.forEach(function(el){
         el.style.display = 'none'
@@ -41,12 +42,21 @@ function nBack(backNum){
             }
             ing = 0;
         }else{
-            randomeNum = Math.floor( ( Math.random() * (4 - 1) + 1 ) )
+            if(count > backNum - 1){
+                currentNum = result[count - backNum]
+                if(Math.floor( Math.random()*100) < 49){
+                    randomeNum = currentNum
+                }else{
+                    randomeNum = Math.floor( ( Math.random() * (10 - 1) + 1 ) )
+                }
+            }else{
+                randomeNum = Math.floor( ( Math.random() * (10 - 1) + 1 ) )
+            }
             num.innerHTML = `<span class="fadeout">${randomeNum}</span>`
             result.push(randomeNum)
             count++;  
         }         
-    }, 2000);
+    }, 100);
 }
 function showResult(){
     btnResult.style.display = 'none';
