@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>N-BACK 두뇌트레이닝</title>
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -21,7 +21,7 @@
         <button type="button" class="btn_start" onclick="nBack(4)">4back(nightmare)</button>
         <button type="button" class="btn_start" onclick="nBack(5)">5back(hell)</button>
         <button type="button" class="btn_result" style="display: none;" onclick="showResult()">정답공개</button>
-        <button type="button" class="btn_restart" style="display: none;" onclick="location.reload()">다시하기</button>
+        <button type="button" class="btn_restart green" style="display: none;" onclick="location.reload()">다시하기</button>
         <div class="result" style="display: none;"></div>
         <div class="my_result"></div>
         <div class="game_info">
@@ -29,6 +29,7 @@
             2. 나오는 숫자가 N번째 전의 숫자와 동일하면 O(혹은 숫자1)을 틀리면 X(혹은 숫자2)를 선택합니다.<br>            
             <span>예) 2-back에서 1 2 1 3 순서로 숫자가 나왔다면 2번째 전의 숫자와 비교 해야 하므로 정답은 O X 가 됩니다.</span>
         </div>
+        <div class="ox_box"></div>
     </div>
     <div class="btnBox" style="display: none;">
         <button type="button" onclick="inputMyResult(1)" class="btn_my_result">O</button>

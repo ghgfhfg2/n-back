@@ -7,6 +7,7 @@ let randomeNum;
 let ing = 0;
 let gameNum
 let currentNum
+let ranNum2
 const num = document.querySelector('.number');
 const resultBox = document.querySelector('.result');
 const btnResult = document.querySelector('.btn_result');
@@ -16,6 +17,7 @@ const restart = document.querySelector('.btn_restart');
 const btnBox = document.querySelector('.btnBox');
 const gameinfoBox = document.querySelector('.game_info');
 const btnGameinfo = document.querySelector('.btn_game_info');
+const oxBox = document.querySelector('.ox_box');
 
 function nBack(backNum){
     ing = 1;
@@ -44,7 +46,8 @@ function nBack(backNum){
         }else{
             if(count > backNum - 1){
                 currentNum = result[count - backNum]
-                if(Math.floor( Math.random()*100) < 49){
+                ranNum2 = Math.floor( Math.random()*100)
+                if(ranNum2 < 49){
                     randomeNum = currentNum
                 }else{
                     randomeNum = Math.floor( ( Math.random() * (10 - 1) + 1 ) )
@@ -52,11 +55,11 @@ function nBack(backNum){
             }else{
                 randomeNum = Math.floor( ( Math.random() * (10 - 1) + 1 ) )
             }
-            num.innerHTML = `<span class="fadeout">${randomeNum}</span>`
+            num.innerHTML = `<span class="fadeout num">${randomeNum}</span>`
             result.push(randomeNum)
             count++;  
         }         
-    }, 100);
+    }, 2000);
 }
 function showResult(){
     btnResult.style.display = 'none';
@@ -64,7 +67,6 @@ function showResult(){
     let score = resultCheck.filter((word,idx)=>{
         return word == answer[idx] ? word : '';
     })
-    console.log(resultCheck, answer, score)
     resultBox.innerHTML = `<span style="font-size:17px">진행게임 ${gameNum}-back : ${result}</span><br><hr>
                             정답 : <span class="letter_space">${resultCheck.join('')}</span><br>
                             내답 : <span class="letter_space">${answer.join('')}</span><br>
@@ -75,10 +77,10 @@ window.addEventListener('keydown',function(e){
     if(ing == 1){
         if(e.key == 1){
             answer.push('O')
-            myResult.innerHTML = '<span class="fadeout fast">O</span>'            
+            oxBox.innerHTML = '<span class="fadeout fast">O</span>'            
         }else{
             answer.push('X')
-            myResult.innerHTML = '<span class="fadeout fast">X</span>'             
+            oxBox.innerHTML = '<span class="fadeout fast">X</span>'             
         }   
     }
 }) 
@@ -86,11 +88,11 @@ function inputMyResult(num){
     if(ing == 1){
         if(num == 1){
             answer.push('O')
-            myResult.innerHTML = '<span class="fadeout fast">O</span>'            
+            oxBox.innerHTML = '<span class="fadeout fast">O</span>'            
         }
         if(num == 2){
             answer.push('X')
-            myResult.innerHTML = '<span class="fadeout fast">X</span>'             
+            oxBox.innerHTML = '<span class="fadeout fast">X</span>'
         }   
     }
 }
